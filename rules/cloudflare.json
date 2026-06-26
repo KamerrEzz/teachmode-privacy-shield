@@ -1,0 +1,18 @@
+{
+  "domain": "dash.cloudflare.com",
+  "selectors": [
+    "[data-testid='account-id']",
+    "[data-testid='zone-id']",
+    ".account-id",
+    ".zone-id",
+    "code",
+    "pre",
+    "[class*='nameserver']",
+    "[class*='ip-address']",
+    "[class*='origin-ip']",
+    "[class*='dns-record']",
+    "[aria-label*='IP']",
+    "[aria-label*='Account ID']"
+  ],
+  "patterns": ["ip", "accountId", "zoneId", "nameserver", "apiToken"]
+}

@@ -1,0 +1,78 @@
+{
+  "_comment": "Reference catalog. The actual patterns live in content/censor.js (GLOBAL_PATTERNS + DOMAIN_RULES).",
+  "globalPatterns": [
+    { "key": "awsAccessKey",  "label": "AWS Access Key",     "format": "AKIA[A-Z0-9]{16}",                        "specificity": "HIGH" },
+    { "key": "awsArn",        "label": "AWS ARN",            "format": "arn:{partition}:{service}:{region}:{account}:{resource}", "specificity": "HIGH" },
+    { "key": "awsS3Uri",      "label": "S3 URI",             "format": "s3://{bucket}/{key}",                     "specificity": "HIGH" },
+    { "key": "awsEcrUri",     "label": "ECR URI",            "format": "{account}.dkr.ecr.{region}.amazonaws.com","specificity": "HIGH" },
+    { "key": "githubToken",   "label": "GitHub Token",       "format": "ghp_{36+ chars} / gho_ / ghs_ / ghu_",   "specificity": "HIGH" },
+    { "key": "githubPAT",     "label": "GitHub Token",       "format": "github_pat_{82 chars}",                   "specificity": "HIGH" },
+    { "key": "npmToken",      "label": "npm Token",          "format": "npm_{36 chars}",                          "specificity": "HIGH" },
+    { "key": "gcpApiKey",     "label": "GCP API Key",        "format": "AIza{35 chars}",                          "specificity": "HIGH" },
+    { "key": "gcpSA",         "label": "GCP Svc Account",   "format": "{name}@{project}.iam.gserviceaccount.com","specificity": "HIGH" },
+    { "key": "gcpOAuth",      "label": "GCP OAuth Client",  "format": "{id}.apps.googleusercontent.com",         "specificity": "HIGH" },
+    { "key": "gcpGcsUri",     "label": "GCS URI",            "format": "gs://{bucket}/{object}",                  "specificity": "HIGH" },
+    { "key": "stripeKey",     "label": "Stripe Key",         "format": "sk_live_{24+ chars} / sk_test_ / pk_",   "specificity": "HIGH" },
+    { "key": "stripeWebhook", "label": "Stripe Webhook",     "format": "whsec_{20+ chars}",                       "specificity": "HIGH" },
+    { "key": "stripeObj",     "label": "Stripe ID",          "format": "cus_{14+} / pi_ / pm_ / sub_ / acct_",   "specificity": "HIGH" },
+    { "key": "doToken",       "label": "DO Token",           "format": "dop_v1_{64 hex chars}",                   "specificity": "HIGH" },
+    { "key": "renderKey",     "label": "Render API Key",     "format": "rnd_{36+ chars}",                         "specificity": "HIGH" },
+    { "key": "sentryToken",   "label": "Sentry Token",       "format": "sntrys_{60+ chars}",                      "specificity": "HIGH" },
+    { "key": "sentryDsn",     "label": "Sentry DSN",         "format": "https://{key}@o{id}.ingest.sentry.io/{id}", "specificity": "HIGH" },
+    { "key": "flyToken",      "label": "Fly.io Token",       "format": "fo1_{36+ chars}",                         "specificity": "HIGH" },
+    { "key": "mongoUri",      "label": "MongoDB URI",        "format": "mongodb+srv://{user}:{pass}@{host}/{db}", "specificity": "HIGH" },
+    { "key": "supabaseUrl",   "label": "Supabase URL",       "format": "{20-char-id}.supabase.co",                "specificity": "HIGH" },
+    { "key": "railwayDomain", "label": "Railway URL",        "format": "{app}.up.railway.app",                    "specificity": "HIGH" },
+    { "key": "herokuPg",      "label": "Heroku DB",          "format": "postgres://{user}:{pass}@{host}.compute-1.amazonaws.com/{db}", "specificity": "HIGH" }
+  ],
+  "domainRules": {
+    "console.aws.amazon.com": {
+      "description": "AWS Console — 12-digit account IDs and service endpoints",
+      "patterns": ["awsAccountId (12-digit number)", "awsEndpoint (*.amazonaws.com)"]
+    },
+    "portal.azure.com": {
+      "description": "Azure Portal — subscription/tenant/client UUIDs, connection strings, storage keys",
+      "patterns": ["azureUuid (UUID)", "azureConnStr (connection string prefixes)", "azureStorage (88-char base64)"]
+    },
+    "console.cloud.google.com": {
+      "description": "GCP Console — 12-digit project numbers",
+      "patterns": ["gcpProjectNum (12-digit)"]
+    },
+    "vercel.com": {
+      "description": "Vercel Dashboard — project/team/edge-config IDs",
+      "patterns": ["prj_* (project ID)", "team_* (team ID)", "ecfg_* (edge config)"]
+    },
+    "app.netlify.com": {
+      "description": "Netlify — site UUIDs and deploy hook tokens",
+      "patterns": ["netlifyId (UUID)", "netlifyHook (build_hooks/* URL segment)"]
+    },
+    "cloud.digitalocean.com": {
+      "description": "DigitalOcean — resource UUIDs and Spaces access keys",
+      "patterns": ["doUuid (UUID)", "doSpacesKey (DO[A-Z0-9]{16,20})"]
+    },
+    "dashboard.heroku.com": {
+      "description": "Heroku — API keys as UUIDs",
+      "patterns": ["herokuApiKey (UUID)"]
+    },
+    "app.supabase.com": {
+      "description": "Supabase — JWT anon/service keys and project UUIDs",
+      "patterns": ["supabaseJwt (eyJ... JWT)", "supabaseUuid (UUID)"]
+    },
+    "cloud.mongodb.com": {
+      "description": "MongoDB Atlas — 24-char ObjectIDs and UUID API private keys",
+      "patterns": ["mongoObjectId (24-char hex)", "mongoUuid (UUID)"]
+    },
+    "app.datadoghq.com": {
+      "description": "Datadog — 32-char API keys, 40-char App keys, pub* client tokens",
+      "patterns": ["ddApiKey (32-char hex)", "ddAppKey (40-char hex)", "ddClientToken (pub*)"]
+    },
+    "sentry.io": {
+      "description": "Sentry — old-format 64-char hex auth tokens",
+      "patterns": ["sentryOldToken (64-char hex)"]
+    },
+    "github.com": {
+      "description": "GitHub — .npmrc auth token lines in org/repo settings",
+      "patterns": ["githubNpmrc (//registry.npmjs.org/:_authToken=*)"]
+    }
+  }
+}
