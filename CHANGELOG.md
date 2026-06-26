@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-06-25
+
+### Added
+
+- **Phone number detection** — international format (`+1 555 123 4567`, `+34 612 345 678`, etc.)
+  censored globally on all pages. Requires the `+` country prefix to avoid false positives on port
+  numbers, timestamps, and numeric IDs. Local formats (without `+`) can be added per-session via
+  Custom Patterns in the popup.
+
 ## [1.0.0] - 2026-06-25
 
 ### Added
@@ -40,5 +49,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Priority pattern order** — domain-specific → global specific → builtin broad →
   user custom; first match wins the label shown on hover
 
-[Unreleased]: https://github.com/KamerrEzz/teachmode-privacy-shield/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/KamerrEzz/teachmode-privacy-shield/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/KamerrEzz/teachmode-privacy-shield/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/KamerrEzz/teachmode-privacy-shield/releases/tag/v1.0.0

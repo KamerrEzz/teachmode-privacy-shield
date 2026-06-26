@@ -52,6 +52,10 @@
     { key: "railwayPg",     label: "Railway DB",      regex: /\bpostgresql?:\/\/[^\s<"']+\.railway\.app[^\s<"']*/g },
     // Heroku postgres (conn string is specific enough globally)
     { key: "herokuPg",      label: "Heroku DB",       regex: /\bpostgres:\/\/[a-z0-9]+:[^@]+@[a-z0-9-]+\.compute-1\.amazonaws\.com[^\s<"']*/g },
+    // Phone numbers — international format only (requires + country prefix to avoid false positives
+    // on port numbers, timestamps, IDs). Local formats vary too much per country; add them via
+    // Custom Patterns in the popup if needed.
+    { key: "phone",         label: "Phone",            regex: /\+[1-9]\d{0,2}[\s.\-]?\(?\d{1,5}\)?(?:[\s.\-]\d{2,5}){1,3}\b/g },
   ];
 
   // ── MEDIUM-specificity patterns scoped to their domain ──────────────────────
