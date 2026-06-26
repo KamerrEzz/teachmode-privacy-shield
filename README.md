@@ -6,6 +6,33 @@ Designed for educators and developers who need to share their screen without exp
 
 ---
 
+## Screenshots
+
+<table>
+  <tr>
+    <td align="center">
+      <img src="docs/screenshots/popup.png" width="220" alt="Popup UI" /><br/>
+      <sub><b>Popup</b> — Privacy Shield active, pinned domain, custom pattern added</sub>
+    </td>
+    <td align="center">
+      <img src="docs/screenshots/shield-on.png" width="520" alt="Privacy Shield ON" /><br/>
+      <sub><b>Privacy Shield ON</b> — IPs, tokens, account IDs, nameservers and emails replaced with labels</sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="docs/screenshots/blur-mode.png" width="520" alt="Blur mode" /><br/>
+      <sub><b>Blur mode</b> — clicked element blurred instead of hidden; orange border marks the section</sub>
+    </td>
+    <td align="center">
+      <img src="docs/screenshots/custom-patterns.png" width="520" alt="Custom patterns" /><br/>
+      <sub><b>Custom patterns</b> — user-defined PROJ-\d+ and BUILD-[A-Z]+ censored with custom labels</sub>
+    </td>
+  </tr>
+</table>
+
+---
+
 ## Features
 
 | Feature | Description |
